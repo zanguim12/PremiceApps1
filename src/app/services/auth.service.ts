@@ -60,13 +60,13 @@ export class AuthService {
     //   console.error("Error decoding token:", error);
     //   this.logout(); // Logout if token is invalid
     // }
-    this.username = user.user.username;
-    this.roles = user.user.role;
+    this.username = user.username;
+    this.roles = user.role;
     window.localStorage.setItem("auth-user", JSON.stringify(user));
   }
 
   isAdmin(): boolean {
-    console.log("is admin ? ", this.roles === 'ADMIN')
+    //console.log("is admin ? ", this.roles === 'ADMIN')
     return this.roles === "ADMIN";
   }
 
