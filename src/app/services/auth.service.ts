@@ -30,7 +30,7 @@ export class AuthService {
             // const mockToken = this.createMockToken(user);
             // console.log("Mock token: ", mockToken);
             // this.loadProfile({ access_token: mockToken });
-            this.loadProfile(user);
+            this.loadProfile(user, 0);
             return { success: true, user };
           } else {
             return { success: false, message: 'Invalid credentials' };
@@ -47,8 +47,8 @@ export class AuthService {
   //   return btoa(JSON.stringify(payload));
   // }
 
-  loadProfile(user: any) {
-    console.log("user from loadProfile	: ", user)
+  loadProfile(user: any, index?: number) {
+    //console.log("user from loadProfile	: ", user)
     this.isAuth = true;
     // this.accessToken = data['access_token'];
     // try {
@@ -60,13 +60,20 @@ export class AuthService {
     //   console.error("Error decoding token:", error);
     //   this.logout(); // Logout if token is invalid
     // }
-    this.username = user.username;
-    this.roles = user.role;
+    if (index === 0) {
+      this.username = user.username;
+      //console.log("username : ", user.role)
+      this.roles = user.role;
+    } else {
+      this.username = user.user.username;
+      this.roles = user.user.role;
+    }
     window.localStorage.setItem("auth-user", JSON.stringify(user));
   }
 
   isAdmin(): boolean {
     //console.log("is admin ? ", this.roles === 'ADMIN')
+    //console.log("roles : ", this.roles)
     return this.roles === "ADMIN";
   }
 

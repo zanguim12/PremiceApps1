@@ -1,3 +1,3 @@
 #!/bin/bash
 echo "Starting backend..."
-npx json-server ./backend/db.json --port 8080
+npx json-server ./backend/db.json --port 8000
