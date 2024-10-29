@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(username, password).subscribe({
       next: data => {
         console.log("data ", data)
-        if (data.succes) {
+        if (!data.success) {
           Swal.mixin({
             toast: true,
             position: 'top-end',
