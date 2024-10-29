@@ -13,7 +13,7 @@ export class AuthService {
   username: string | null = null;
   // accessToken: string | null = null;
 
-  private apiUrl = 'http://localhost:8000'; // JSON Server URL
+  private apiUrl = 'http://localhost:8080'; // JSON Server URL
 
   constructor(private http: HttpClient, private router: Router) {
   }

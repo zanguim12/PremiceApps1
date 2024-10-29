@@ -43,9 +43,9 @@ export class LoginComponent implements OnInit {
 
           this.authService.loadProfile(data);
           if (this.authService.isAdmin()) {
-            this.router.navigateByUrl("/admin/home");
+            this.router.navigateByUrl("/admin/dashboard");
           } else {
-            this.router.navigateByUrl("/user/home");
+            this.router.navigateByUrl("/user/dashboard");
           }
         }
       },

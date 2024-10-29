@@ -48,7 +48,7 @@ import { Customer } from "../model/customer.model";
 export class CustomerService {
 
   // Base URL for the JSON server
-  host: string = 'http://localhost:8000';
+  host: string = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 

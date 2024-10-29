@@ -1,124 +1,82 @@
-<mat-toolbar color="primary">
-  <button (click)="menuDrawer.toggle()" *ngIf="authService.isAdmin()" mat-icon-button>
+<mat-toolbar color="primary" class="bg-gray-200 border-b border-gray-300 px-4 py-2">
+  <!-- Bouton pour ouvrir le menu latéral pour les administrateurs uniquement -->
+  <button (click)="menuDrawer.toggle()" *ngIf="authService.isAdmin()" mat-icon-button class="mr-4">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>DIGITAL BANK</span>
-  <span style="flex: auto"></span>
-  <button mat-button routerLink="/admin/home">
-    <mat-icon>home</mat-icon>
-    Home
+
+  <!-- Logo de l'application -->
+  <img src="/assets/Logo-Type-pour-RS-02.png" alt="Logo" class="h-200 w-10 mr-4"/>
+
+  <!-- Espace flexible pour aligner les éléments à droite -->
+  <span class="flex-1"></span>
+
+  <!-- Menu Profil pour utilisateurs authentifiés -->
+  <button *ngIf="authService.isAuth" [matMenuTriggerFor]="ProfilMenu" mat-button class="text-gray-700 hover:text-blue-600">
+    Profil : {{ authService.username }}
+    <mat-icon class="ml-1">keyboard_arrow_down</mat-icon>
   </button>
-  <button *ngIf="authService.isAdmin()" [matMenuTriggerFor]="CusMenu" mat-button>
-    <mat-icon>person</mat-icon>
-    <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
-    Customers
-  </button>
-  <!-- Customer Menu -->
-  <mat-menu #CusMenu="matMenu">
-    <button mat-menu-item routerLink="/admin/customers">Search Customers</button>
-    <button mat-menu-item routerLink="/admin/new-customer">Create Customer</button>
-  </mat-menu>
-  <!-- Accounts Button -->
-  <button *ngIf="authService.isAdmin()" [matMenuTriggerFor]="accountMenu" mat-button>
-    <mat-icon>account_balance</mat-icon>
-    <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
-    Accounts
-  </button>
-  <!-- Accounts Menu -->
-  <mat-menu #accountMenu="matMenu">
-    <button mat-menu-item routerLink="/admin/accounts">Search Accounts</button>
-    <button mat-menu-item routerLink="/admin/accountsList">Manage Accounts</button>
-  </mat-menu>
-  <!-- Profile Menu -->
-  <button *ngIf="authService.isAuth" [matMenuTriggerFor]="ProfilMenu" mat-button>
-    Profile : {{ authService.username }}
-    <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
-  </button>
+
   <mat-menu #ProfilMenu="matMenu">
     <button mat-menu-item>
-      Role: {{ authService.roles === "USER" ? 'User' : (authService.roles==="ADMIN" ? 'Admin' : 'NULL') }}
+      Rôle : {{ authService.roles === "USER" ? 'Utilisateur' : (authService.roles==="ADMIN" ? 'Administrateur' : 'Aucun') }}
     </button>
-    <button mat-menu-item routerLink="/admin/profile">Change password</button>
+    <button mat-menu-item routerLink="/admin/profile">Changer le mot de passe</button>
   </mat-menu>
-  <button (click)="logout()" color="warn" mat-raised-button>Logout</button>
+
+  <!-- Bouton de déconnexion -->
+  <button (click)="logout()" color="warn" mat-raised-button class="ml-4 bg-red-600 hover:bg-red-700 text-white">Déconnexion</button>
 </mat-toolbar>
 
 <mat-drawer-container class="drawer-container">
-  <mat-drawer #menuDrawer class="sidebar" mode="side" [opened]="authService.isAdmin()">
+  <!-- Menu latéral pour les administrateurs uniquement -->
+  <mat-drawer #menuDrawer class="sidebar bg-gray-100" mode="side" [opened]="authService.isAdmin()">
     <mat-nav-list>
-      <!-- Dashboard -->
+      <!-- Section du tableau de bord -->
       <mat-list-item>
-        <button mat-button routerLink="/admin/dashboard">
-          <mat-icon>dashboard</mat-icon>
-          <span>Dashboard</span>
+        <button mat-button routerLink="/admin/dashboard" class="flex items-center text-gray-700 hover:bg-gray-200">
+          <mat-icon class="mr-2">dashboard</mat-icon>
+          <span>Tableau de bord</span>
         </button>
       </mat-list-item>
 
-      <!-- Customers Section -->
+      <!-- Section Clients -->
       <mat-accordion multi="true">
         <mat-expansion-panel>
           <mat-expansion-panel-header>
-            <mat-panel-title>
-              <mat-icon>person</mat-icon>
-              Customers
+            <mat-panel-title class="flex items-center">
+              <mat-icon class="mr-2">person</mat-icon>
+              Clients
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-action-list>
-            <button mat-list-item routerLink="/admin/customers">
-              <mat-icon>search</mat-icon>
-              Search Customers
+            <button mat-list-item routerLink="/admin/customers" class="flex items-center hover:bg-gray-200">
+              <mat-icon class="mr-2">search</mat-icon>
+              Rechercher des clients
             </button>
-            <button mat-list-item routerLink="/admin/new-customer">
-              <mat-icon>add_circle_outline</mat-icon>
-              Add Customer
+            <button mat-list-item routerLink="/admin/new-customer" class="flex items-center hover:bg-gray-200">
+              <mat-icon class="mr-2">add_circle_outline</mat-icon>
+              Ajouter un client
             </button>
-            <button mat-list-item routerLink="/admin/customers">
-              <mat-icon>edit</mat-icon>
-              Manage Customers
+            <button mat-list-item routerLink="/admin/customers" class="flex items-center hover:bg-gray-200">
+              <mat-icon class="mr-2">edit</mat-icon>
+              Gérer les clients
             </button>
           </mat-action-list>
         </mat-expansion-panel>
       </mat-accordion>
 
-      <!-- Accounts Section -->
-      <mat-accordion multi="true">
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <mat-icon>account_balance</mat-icon>
-              Accounts
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <mat-action-list>
-            <button mat-list-item routerLink="/admin/accounts">
-              <mat-icon>add_circle_outline</mat-icon>
-              Add Account
-            </button>
-            <button mat-list-item routerLink="/admin/accounts">
-              <mat-icon>search</mat-icon>
-              Search Accounts
-            </button>
-            <button mat-list-item routerLink="/admin/accountsList">
-              <mat-icon>edit</mat-icon>
-              Manage Accounts
-            </button>
-          </mat-action-list>
-        </mat-expansion-panel>
-      </mat-accordion>
-
-      <!-- User Management Section -->
+      <!-- Gestion des utilisateurs -->
       <mat-list-item>
-        <button mat-button routerLink="/admin/users">
-          <mat-icon>security</mat-icon>
-          Manage Users
+        <button mat-button routerLink="/admin/users" class="flex items-center text-gray-700 hover:bg-gray-200">
+          <mat-icon class="mr-2">security</mat-icon>
+          Gérer les utilisateurs
         </button>
       </mat-list-item>
-
     </mat-nav-list>
   </mat-drawer>
 
   <mat-drawer-content>
-    <div class="content-wrapper">
+    <div class="content-wrapper p-4 bg-gray-50 min-h-screen">
       <router-outlet></router-outlet>
     </div>
   </mat-drawer-content>
