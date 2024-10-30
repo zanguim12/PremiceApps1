@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-navbar',
@@ -7,6 +8,8 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  @ViewChild('menuDrawer') menuDrawer!: MatDrawer;
+
   constructor(public authService: AuthService) { }
 
   logout(): void {

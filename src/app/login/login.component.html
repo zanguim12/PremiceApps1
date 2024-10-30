@@ -1,22 +1,42 @@
-<div class="container">
-  <mat-card class="login-form" [formGroup]="loginForm">
+
+<div class="login-container">
+
+  <div class=" flex flex-wrap items-center">
+    <a href="./" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img src="/assets/Logo-Type-pour-RS-02.png" class="h-40" alt="Premice Logo">
+      <!-- <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Premice</span> -->
+    </a>
+  </div>
+
+  <mat-card class="login-card" [formGroup]="loginForm">
     <mat-card-header>
-      <mat-card-title><mat-icon>lock</mat-icon> Authentication</mat-card-title>
+      <mat-card-title>
+        <mat-icon>lock</mat-icon> Bienvenue de Retour
+      </mat-card-title>
+      <mat-card-subtitle>Veuillez vous connecter pour continuer</mat-card-subtitle>
     </mat-card-header>
     <mat-divider></mat-divider>
-    <span></span>
     <mat-card-content>
       <mat-form-field appearance="outline" class="full-width-input">
-        <mat-label>Username or Email</mat-label>
-        <input matInput formControlName="username" placeholder="Enter your username or email">
+        <mat-label>Nom d'utilisateur ou Email</mat-label>
+        <input matInput formControlName="username" placeholder="Entrez votre nom d'utilisateur ou email">
         <mat-icon matSuffix>person_outline</mat-icon>
       </mat-form-field>
       <mat-form-field appearance="outline" class="full-width-input">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password" placeholder="Enter your password">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Entrez votre mot de passe">
         <mat-icon matSuffix>lock_outline</mat-icon>
       </mat-form-field>
-      <button (click)="login()" mat-raised-button color="primary" class="w-100">Log in</button>
+      <button (click)="login()" mat-raised-button color="primary" class="login-button">Connexion</button>
     </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="accent" class="forgot-password">Mot de passe oublié ?</button>
+    </mat-card-actions>
+    <div class="flex md:order-2 items-center space-x-3">
+      <span class="text-sm">Vous n'avez pas de compte ?</span>
+      <button type="button"  [routerLink]="['/register']" class="text-blue-600 bg-blue-200 hover:bg-blue-300 rounded-lg text-sm px-4 py-2 dark:bg-gray-200 dark:hover:bg-blue-300">
+        s'inscrire
+      </button>
+    </div>
   </mat-card>
 </div>

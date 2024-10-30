@@ -38,12 +38,12 @@ export class EditCustomerComponent implements OnInit {
           });
         },
         error: (err) => {
-          console.error('Failed to get customer:', err);
+          console.error('Impossible d&obtenir un client:', err);
           this.router.navigate(['/admin/customers']);
         }
       });
     } else {
-      console.error('Invalid customer ID');
+      console.error('ID du Client invalide');
       this.router.navigate(['/admin/customers']);
     }
   }
@@ -55,8 +55,8 @@ export class EditCustomerComponent implements OnInit {
         next: () => {
           //alert
           Swal.fire({
-            title: 'Success!',
-            text: 'Customer updated successfully',
+            title: 'succès!',
+            text: 'Client mis à jour avec succès',
             icon: 'success',
             confirmButtonText: 'OK'
           });
@@ -64,8 +64,8 @@ export class EditCustomerComponent implements OnInit {
           this.router.navigate(['/admin/customers']);
         },
         error: (error) => {
-          console.error('Error updating customer:', error);
-          alert('Failed to update customer.');
+          console.error('Erreur lors de la mise à jour du client:', error);
+          alert('Échec de la mise à jour du client.');
         }
       });
     }

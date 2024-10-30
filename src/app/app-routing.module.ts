@@ -36,7 +36,7 @@ const routes: Routes = [
     path: "user",
     component: TemplateComponent,
     children: [
-      // {path: "home", component: HomeComponent},
+      {path: "home", component: HomeComponent},
       {path: "profile", component: ProfilComponent},
       {path: 'not-authorized', component: NotAuthorizedComponent},
     ]

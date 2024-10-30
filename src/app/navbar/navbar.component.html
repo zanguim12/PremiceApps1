@@ -1,11 +1,11 @@
-<mat-toolbar color="primary" class="bg-gray-200 border-b border-gray-300 px-4 py-2">
-  <!-- Bouton pour ouvrir le menu latéral pour les administrateurs uniquement -->
+<mat-toolbar color="primary" class="bg-gray-200 border-b border-gray-300 px-2 py-2 ">
+  <!-- Bouton menu latéral pour les administrateurs uniquement -->
   <button (click)="menuDrawer.toggle()" *ngIf="authService.isAdmin()" mat-icon-button class="mr-4">
     <mat-icon>menu</mat-icon>
   </button>
 
   <!-- Logo de l'application -->
-  <img src="/assets/Logo-Type-pour-RS-02.png" alt="Logo" class="h-200 w-10 mr-4"/>
+  <img src="/assets/Logo-Type-pour-RS-02.png" alt="Logo" class="h-100 w-auto mr-4"/>
 
   <!-- Espace flexible pour aligner les éléments à droite -->
   <span class="flex-1"></span>
@@ -24,14 +24,16 @@
   </mat-menu>
 
   <!-- Bouton de déconnexion -->
-  <button (click)="logout()" color="warn" mat-raised-button class="ml-4 bg-red-600 hover:bg-red-700 text-white">Déconnexion</button>
+  <button (click)="logout()" color="warn" mat-raised-button class="ml-4 bg-red-600 justify-between hover:bg-red-100 text-white">
+    Déconnexion
+  </button>
 </mat-toolbar>
 
-<mat-drawer-container class="drawer-container">
+<mat-drawer-container class="drawer-container min-h-screen">
   <!-- Menu latéral pour les administrateurs uniquement -->
   <mat-drawer #menuDrawer class="sidebar bg-gray-100" mode="side" [opened]="authService.isAdmin()">
     <mat-nav-list>
-      <!-- Section du tableau de bord -->
+      <!-- Tableau de bord -->
       <mat-list-item>
         <button mat-button routerLink="/admin/dashboard" class="flex items-center text-gray-700 hover:bg-gray-200">
           <mat-icon class="mr-2">dashboard</mat-icon>

@@ -38,7 +38,7 @@ export class CustomerAccountsComponent implements OnInit {
   customerId! : string ;
   customer! : Customer;
   accounts: any
-  displayedColumns: string[] = ['id','customer','type', 'creationDate', 'status', 'balance'];
+  displayedColumns: string[] = ['id', 'customer', 'type', 'creationDate', 'status', 'balance'];
   dataSource!: MatTableDataSource<Account>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

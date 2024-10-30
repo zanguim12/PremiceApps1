@@ -1,33 +1,160 @@
+/* Toolbar Styling */
 .mat-toolbar {
-  position: relative;
-  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #3a8dff;
+  /* primary color for modern look */
+  color: white;
+}
+
+.toolbar-title {
+  font-weight: 600;
+  font-size: 1.5em;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+button[mat-button] {
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+button[mat-button]:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Drawer Container Styling */
+.mat-drawer-container {
+  margin-top: 64px;
+  transition: margin-left 0.3s ease-in-out;
 }
 
 .sidebar {
+  width: 280px;
+  background-color: #f9fafc;
+  /* light background for modern look */
+  border-right: 1px solid #e0e0e0;
   position: fixed;
   top: 64px;
-  width: 250px;
   height: calc(100% - 64px);
   overflow-y: auto;
-  background-color: #f0f0f0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
 }
 
-.mat-drawer-container {
-  transition: margin-left 0.3s;
+/* Sidebar List Items */
+.mat-nav-list mat-list-item {
+  padding: 12px;
+  color: #333333;
 }
 
-.mat-expansion-panel {
-  border-bottom: 1px solid #ccc;
+.mat-list-item {
+  margin-bottom: 10px;
 }
 
-.mat-action-list button {
+.mat-list-item button[mat-button] {
+  color: #333;
   width: 100%;
+  justify-content: flex-start;
+  padding-left: 16px;
+  font-weight: 500;
+}
+
+.mat-list-item button[mat-button]:hover {
+  background-color: #e3f2fd;
+  /* light highlight on hover */
 }
 
 .mat-icon {
   margin-right: 10px;
+  color: #3a8dff;
+  /* icon color for consistency */
 }
 
+/* Expansion Panel Styling */
+.mat-expansion-panel {
+  margin-bottom: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mat-expansion-panel-header {
+  background-color: #e0e0e0;
+  padding: 12px 16px;
+  transition: background-color 0.3s ease;
+}
+
+.mat-expansion-panel-header:hover {
+  background-color: #d6e4ff;
+  /* lighter background on hover */
+}
+
+.mat-panel-title {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.mat-panel-title mat-icon {
+  margin-right: 8px;
+}
+
+/* Content Styling */
 .mat-drawer-content {
-  padding: 20px;
+  padding: 24px;
+  background-color: #f5f5f5;
+  min-height: calc(100vh - 64px);
+}
+
+.content-wrapper {
+  padding: 24px;
+  background-color: #ffffff;
+  /* slightly distinct background */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  min-height: calc(100vh - 88px);
+}
+
+/* Logout Button Styling */
+button[mat-raised-button] {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+button[color="warn"] {
+  background-color: #36def4;
+  margin-left: 1500px;
+  margin-right: 1px;
+  transition: background-color 0.3s ease;
+}
+
+button[color="warn"]:hover {
+  background-color: #e53935;
+}
+
+@media (max-width: 768px) {
+
+  /* Responsive Adjustments */
+  .sidebar {
+    width: 240px;
+  }
+
+  .toolbar-title {
+    font-size: 1.2em;
+  }
+
+  .mat-drawer-content {
+    padding: 16px;
+  }
+
+  .content-wrapper {
+    padding: 16px;
+  }
 }

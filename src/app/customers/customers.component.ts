@@ -47,13 +47,13 @@ export class CustomersComponent implements OnInit{
   handleDeleteCustomer(customer: Customer) {
     //alert
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'Do you want to delete this customer?',
+      title: 'Es-tu sûr?',
+      text: 'Voulez-vous supprimer ce client ?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Oui, supprime-le!'
 
     }).then((result) => {
       if (result.isConfirmed) {
@@ -62,14 +62,14 @@ export class CustomersComponent implements OnInit{
             this.customers = this.customers.filter((c: Customer) => c.id !== customer.id);
             this.dataSource.data = this.customers;
             Swal.fire(
-              'Deleted!',
-              'Customer deleted successfully.',
+              'Supprimé!',
+              'Client supprimé avec succès.',
               'success'
             );
           },
           error: error => {
             console.error('Error deleting customer:', error);
-            this.errorMessage = 'Failed to delete customer: ' + (error.message || 'Unknown error');
+            this.errorMessage = 'Échec de la suppression du client: ' + (error.message || 'Unknown error');
             //alert
             Swal.fire({
               title: 'Error!',

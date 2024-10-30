@@ -28,8 +28,8 @@ export class NewCustomerComponent implements OnInit{
         this.router.navigateByUrl('/admin/customers');
         // Alert
         Swal.fire({
-          title: 'Success!',
-          text: 'Customer saved successfully',
+          title: 'succès!',
+          text: 'Client enregistré avec succès',
           icon: 'success',
           confirmButtonText: 'OK'
         });

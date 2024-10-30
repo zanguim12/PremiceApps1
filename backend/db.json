@@ -32,26 +32,25 @@
   "customers": [
     {
       "id": "1",
-      "name": "Leonel ZANGUIM DONGM",
+      "name": "Leonel ZANGUIM ",
       "email": "leonelzanguim4@gmail.com",
       "phone": "654164155"
     },
     {
       "id": "2",
-      "name": "donzap",
+      "name": "donzhjhvjhgjhhj",
       "email": "Donzap@gmail.com",
-      "phone": "654164155"
-    },
-    {
-      "id": "3",
-      "name": "Leonel ZANGUIM DONGMO",
-      "email": "leonelzanguim4@gmail.com",
       "phone": "654164155"
     },
     {
       "id": "5",
       "name": "Gildas",
       "email": "pdoodknvdlsy3d@zlorkun.com"
+    },
+    {
+      "id": "481e",
+      "name": "qwer",
+      "email": "john@example.com"
     }
   ]
 }
